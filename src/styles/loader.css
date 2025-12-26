@@ -1,0 +1,162 @@
+/* =========================================
+   TII – Innovation Loading (SCOPED)
+   Safe for React / Tailwind apps
+========================================= */
+
+.tii-loader {
+  position: fixed;
+  inset: 0;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  overflow: hidden;
+
+  /* Local variables ONLY */
+  --stage-size: 210px;
+  --ring-size: 135px;
+  --font-size: 54px;
+  --text-size: 18px;
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .tii-loader {
+    --stage-size: 160px;
+    --ring-size: 105px;
+    --font-size: 40px;
+    --text-size: 15px;
+  }
+}
+
+/* ===== WRAPPER ===== */
+.tii-loader .loader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+
+/* ===== STAGE ===== */
+.tii-loader .stage {
+  position: relative;
+  width: var(--stage-size);
+  height: var(--stage-size);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ===== ROTATING RING ===== */
+.tii-loader .ring-rotate {
+  position: absolute;
+  width: var(--ring-size);
+  height: var(--ring-size);
+  animation: tii-spin 3.4s linear infinite;
+}
+
+.tii-loader .ring {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  border-top-color: rgba(120, 80, 255, 1);
+  border-right-color: rgba(200, 180, 255, 0.9);
+  filter: blur(0.25px);
+}
+
+/* ===== TII TEXT ===== */
+.tii-loader .tii {
+  font-size: var(--font-size);
+  font-weight: 700;
+  letter-spacing: 6px;
+  background: linear-gradient(135deg, #5b2cff, #cbb6ff, #ffffff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  z-index: 5;
+  text-shadow:
+    0 0 16px rgba(160, 120, 255, 0.35),
+    0 0 32px rgba(160, 120, 255, 0.2);
+}
+
+/* ===== BUBBLES ===== */
+.tii-loader .bubble {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, #ffffff, #cbb6ff 60%, transparent 75%);
+  opacity: 0;
+  animation: tii-bubble-rise 3.6s cubic-bezier(.4,0,.2,1) infinite;
+  filter: blur(.2px);
+  box-shadow: 0 0 8px rgba(180, 140, 255, 0.45);
+}
+
+.tii-loader .b1 { width: 7px; height: 7px; animation-delay: 0s; }
+.tii-loader .b2 { width: 11px; height: 11px; animation-delay: 1.2s; }
+.tii-loader .b3 { width: 6px; height: 6px; animation-delay: 2.4s; }
+.tii-loader .b4 { width: 9px; height: 9px; animation-delay: 3s; }
+
+/* ===== LOADING TEXT ===== */
+.tii-loader .loading-text {
+  display: flex;
+  align-items: center;
+  font-size: var(--text-size);
+  font-weight: 500;
+  letter-spacing: 3px;
+  color: #6a3cff;
+  text-shadow: 0 0 12px rgba(160,120,255,.35);
+}
+
+.tii-loader .loading-text span {
+  opacity: 0;
+  animation: tii-letter-fade 3s ease-in-out infinite;
+}
+
+.tii-loader .loading-text span:nth-child(n) {
+  animation-delay: calc(var(--i) * 0.1s);
+}
+
+/* ===== DOTS ===== */
+.tii-loader .dot {
+  animation: tii-dot-pulse 1.6s infinite;
+  opacity: 0;
+}
+
+.tii-loader .dot:nth-child(18) { animation-delay: 0s; }
+.tii-loader .dot:nth-child(19) { animation-delay: .3s; }
+.tii-loader .dot:nth-child(20) { animation-delay: .6s; }
+
+/* ===== KEYFRAMES (SCOPED) ===== */
+@keyframes tii-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes tii-bubble-rise {
+  0% {
+    transform: translate(0,0) scale(.3);
+    opacity: 0;
+  }
+  20% { opacity: .9; }
+  100% {
+    transform: translate(
+      calc(-40px + 80px * var(--x)),
+      calc(-60px + 120px * var(--y))
+    ) scale(1.25);
+    opacity: 0;
+  }
+}
+
+@keyframes tii-letter-fade {
+  0%   { opacity: 0; }
+  20%  { opacity: 1; }
+  80%  { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@keyframes tii-dot-pulse {
+  0%   { opacity: 0; }
+  30%  { opacity: 1; }
+  100% { opacity: 0; }
+}

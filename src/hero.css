@@ -1,0 +1,348 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =====================================================
+   HERO / LOGIN PAGE ONLY – ENTERPRISE DARK THEME
+   Scoped via .hero-theme
+===================================================== */
+/* TII Invoice Reminder Portal - Dark Enterprise Theme
+   Primary Accent: Soft Enterprise Purple (#6366F1)
+   Theme: Dark with purple highlights
+   All colors MUST be HSL.
+*/
+
+@layer base {
+  .hero-theme {
+    --background: 234 25% 6%;
+    --foreground: 0 0% 98%;
+
+    --card: 234 25% 10%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 234 25% 10%;
+    --popover-foreground: 0 0% 98%;
+
+    /* Soft Enterprise Purple - #6366F1 */
+    --primary: 239 84% 67%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 234 20% 14%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 234 20% 16%;
+    --muted-foreground: 234 10% 60%;
+
+    --accent: 239 84% 67%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 234 20% 18%;
+    --input: 234 20% 18%;
+    --ring: 239 84% 67%;
+
+    --radius: 0.75rem;
+
+    /* Custom tokens for enterprise design */
+    --gradient-start: 234 30% 8%;
+    --gradient-mid: 250 25% 10%;
+    --gradient-end: 234 25% 6%;
+    --glow-primary: 239 84% 67%;
+    --glass-bg: 234 25% 12%;
+    --glass-border: 234 20% 22%;
+    
+    /* Sidebar tokens */
+    --sidebar-background: 234 25% 8%;
+    --sidebar-foreground: 0 0% 95%;
+    --sidebar-primary: 239 84% 67%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 234 20% 14%;
+    --sidebar-accent-foreground: 0 0% 95%;
+    --sidebar-border: 234 20% 18%;
+    --sidebar-ring: 239 84% 67%;
+  }
+}
+
+@layer components {
+  /* Glass morphism card - dark theme optimized */
+  .hero-theme .glass-card {
+    /* Tailwind utilities ONLY */
+    @apply bg-card/60 backdrop-blur-xl border rounded-2xl;
+
+    /* Custom variable-based border color (NOT Tailwind) */
+    border-color: hsl(var(--glass-border));
+
+    box-shadow: 
+      0 0 0 1px hsl(var(--primary) / 0.05),
+      0 8px 32px 0 rgba(0, 0, 0, 0.4),
+      inset 0 1px 0 0 hsl(0 0% 100% / 0.03);
+  }
+
+  /* Enterprise gradient background - dark with subtle purple */
+  .hero-theme .enterprise-gradient {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--gradient-start)) 0%,
+      hsl(var(--gradient-mid)) 50%,
+      hsl(var(--gradient-end)) 100%
+    );
+  }
+
+  /* Dark mesh gradient overlay */
+  .hero-theme .mesh-gradient {
+    background: 
+      radial-gradient(
+        ellipse at 20% 20%,
+        hsl(var(--primary) / 0.08) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        ellipse at 80% 80%,
+        hsl(var(--primary) / 0.06) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        ellipse at 50% 50%,
+        hsl(250 30% 12%) 0%,
+        transparent 70%
+      );
+  }
+
+  /* Floating animation - slower, more elegant */
+  .hero-theme .float-animation {
+    animation: float 8s ease-in-out infinite;
+  }
+
+  .hero-theme .float-animation-delayed {
+    animation: float 8s ease-in-out infinite;
+    animation-delay: -4s;
+  }
+
+  .hero-theme .hero-outline-btn {
+  @apply border border-border text-foreground bg-transparent;
+  transition: all 0.35s ease;
+  }
+
+  .hero-theme .hero-outline-btn:hover {
+  border-color: hsl(var(--primary));
+  background: hsl(var(--primary) / 0.08);
+  box-shadow: 0 0 30px -12px hsl(var(--primary) / 0.4);
+  transform: translateY(-2px);
+  }
+
+  /* Glow effect */
+  .hero-theme .glow-primary {
+    box-shadow: 0 0 40px -10px hsl(var(--glow-primary) / 0.5);
+  }
+
+  /* Subtle pulse */
+  .hero-theme .pulse-subtle {
+    animation: pulse-subtle 4s ease-in-out infinite;
+  }
+
+  /* Gentle floating for chatbot */
+  .hero-theme .animate-float-gentle {
+    animation: float-gentle 4s ease-in-out infinite;
+  }
+
+  /* Scroll-triggered animation classes */
+  .hero-theme .scroll-animate {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+
+  .hero-theme .scroll-animate.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .hero-theme .scroll-animate-left {
+    opacity: 0;
+    transform: translateX(-30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+
+  .hero-theme .scroll-animate-left.in-view {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .hero-theme .scroll-animate-scale {
+    opacity: 0;
+    transform: scale(0.95);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+
+  .hero-theme .scroll-animate-scale.in-view {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .hero-theme .glass-card {
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  }
+
+.hero-theme .glass-card:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    0 0 0 1px hsl(var(--primary) / 0.08),
+    0 20px 40px -10px hsl(var(--primary) / 0.25);
+  }
+
+}
+
+
+@layer utilities {
+  /* Text gradient */
+  .hero-theme .text-gradient-primary {
+    @apply bg-gradient-to-r from-primary via-purple-400 to-primary bg-clip-text text-transparent;
+  }
+
+  /* 3D card hover */
+  .hero-theme .card-3d {
+    transform-style: preserve-3d;
+    transition: transform 0.4s ease-out, box-shadow 0.4s ease-out;
+  }
+
+  .hero-theme .card-3d:hover {
+    transform: translateY(-8px) rotateX(2deg);
+  }
+
+  /* Fade in on scroll helper */
+  .hero-theme .fade-on-scroll {
+    opacity: 0;
+    transition: opacity 0.8s ease-out;
+  }
+
+  .hero-theme .fade-on-scroll.visible {
+    opacity: 1;
+  }
+
+  .hero-theme .shadow-glow {
+  box-shadow: 0 0 30px -10px hsl(var(--primary) / 0.4);
+  }
+
+.hero-theme .shadow-glow-lg {
+  box-shadow: 0 0 50px -10px hsl(var(--primary) / 0.6);
+  }
+
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-15px) rotate(1deg);
+  }
+}
+
+@keyframes float-gentle {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes float-bot {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+  }
+  25% {
+    transform: translateY(-6px) scale(1.02);
+  }
+  50% {
+    transform: translateY(-3px) scale(1);
+  }
+  75% {
+    transform: translateY(-8px) scale(1.01);
+  }
+}
+
+.hero-theme .animate-float-bot {
+  animation: float-bot 4s ease-in-out infinite;
+}
+
+@keyframes pulse-subtle {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.02);
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow: 0 0 30px -10px hsl(var(--primary) / 0.4);
+  }
+  50% {
+    box-shadow: 0 0 50px -10px hsl(var(--primary) / 0.6);
+  }
+}
+
+.hero-theme .animate-fade-in-up {
+  animation: fade-in-up 0.8s ease-out forwards;
+}
+
+.hero-theme .animate-slide-in-left {
+  animation: slide-in-left 0.6s ease-out forwards;
+}
+
+.hero-theme .animate-scale-in {
+  animation: scale-in 0.5s ease-out forwards;
+}
+
+.hero-theme .animate-glow-pulse {
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+
+/* Stagger delays */
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+.delay-500 { animation-delay: 500ms; }
+.delay-600 { animation-delay: 600ms; }
+.delay-700 { animation-delay: 700ms; }
+.delay-800 { animation-delay: 800ms; }
