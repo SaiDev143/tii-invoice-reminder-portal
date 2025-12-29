@@ -1,0 +1,312 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* EDIT COLORS / HOVER ACCENTS HERE */
+    --background: 210 20% 98%;
+    --foreground: 215 25% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 215 25% 15%;
+    --card-hover: 210 20% 96%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 25% 15%;
+
+    /* TII Purple Brand Color */
+    --tii-purple: 258 90% 66%;
+    --tii-purple-foreground: 0 0% 100%;
+    --tii-purple-hover: 258 85% 72%;
+    --tii-purple-light: 258 85% 85%;
+
+    /* Primary uses TII Purple */
+    --primary: 258 90% 66%;
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 258 85% 72%;
+
+    /* Teal Accent */
+    --secondary: 180 65% 50%;
+    --secondary-foreground: 0 0% 100%;
+    --secondary-hover: 180 65% 60%;
+
+    --muted: 210 20% 95%;
+    --muted-foreground: 215 15% 45%;
+
+    --accent: 180 65% 50%;
+    --accent-foreground: 0 0% 100%;
+    --accent-hover: 180 65% 60%;
+
+    /* Status Colors */
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+    
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 215 20% 88%;
+    --input: 215 20% 88%;
+    --ring: 258 90% 66%;
+
+    --radius: 0.75rem;
+    
+    /* Dashboard Specific */
+    --dashboard-gradient-start: 210 20% 98%;
+    --dashboard-gradient-end: 210 30% 96%;
+    
+    /* Card Shadows */
+    --shadow-sm: 0 1px 2px 0 hsl(215 25% 15% / 0.05);
+    --shadow-md: 0 4px 6px -1px hsl(215 25% 15% / 0.1);
+    --shadow-lg: 0 10px 15px -3px hsl(215 25% 15% / 0.15);
+    --shadow-xl: 0 20px 25px -5px hsl(215 25% 15% / 0.2);
+    
+    /* Transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 215 30% 10%;
+    --foreground: 210 20% 98%;
+
+    --card: 215 25% 15%;
+    --card-foreground: 210 20% 98%;
+    --card-hover: 215 25% 18%;
+
+    --popover: 215 25% 15%;
+    --popover-foreground: 210 20% 98%;
+
+    /* TII Purple for dark mode */
+    --tii-purple: 258 85% 72%;
+    --tii-purple-foreground: 0 0% 100%;
+    --tii-purple-hover: 258 90% 78%;
+    --tii-purple-light: 258 70% 90%;
+
+    --primary: 258 85% 72%;
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 258 90% 78%;
+
+    --secondary: 180 65% 45%;
+    --secondary-foreground: 0 0% 100%;
+    --secondary-hover: 180 65% 55%;
+
+    --muted: 215 25% 20%;
+    --muted-foreground: 215 15% 65%;
+
+    --accent: 180 65% 45%;
+    --accent-foreground: 0 0% 100%;
+    --accent-hover: 180 65% 55%;
+
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+    
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 215 25% 25%;
+    --input: 215 25% 25%;
+    --ring: 258 85% 72%;
+    
+    --dashboard-gradient-start: 215 30% 10%;
+    --dashboard-gradient-end: 215 25% 12%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+  
+  /* Reduce motion for accessibility */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer utilities {
+  /* Dashboard Card Animations */
+  .dashboard-card {
+    @apply transition-all duration-300 ease-out;
+    box-shadow: var(--shadow-md);
+  }
+  
+  .dashboard-card:hover {
+    @apply -translate-y-1;
+    box-shadow: var(--shadow-xl);
+  }
+  
+  /* Card Entrance Animation */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .animate-fade-in-up {
+    animation: fadeInUp 0.5s ease-out forwards;
+  }
+  
+  /* Staggered animation delays */
+  .delay-100 { animation-delay: 0.1s; }
+  .delay-200 { animation-delay: 0.2s; }
+  .delay-300 { animation-delay: 0.3s; }
+  .delay-400 { animation-delay: 0.4s; }
+  
+  /* Gradient Background */
+  .dashboard-gradient {
+    background: linear-gradient(135deg, 
+      hsl(var(--dashboard-gradient-start)) 0%, 
+      hsl(var(--dashboard-gradient-end)) 100%);
+  }
+  
+  /* Premium Button Gradient */
+  .btn-gradient {
+    background: linear-gradient(135deg, 
+      hsl(var(--tii-purple)) 0%, 
+      hsl(var(--tii-purple-hover)) 100%);
+    transition: var(--transition-smooth);
+  }
+  
+  .btn-gradient:hover {
+    box-shadow: 0 10px 20px hsl(var(--tii-purple) / 0.4);
+    transform: translateY(-2px);
+  }
+  
+  /* Table Row Hover */
+  .table-row-hover {
+    @apply transition-colors duration-200;
+  }
+  
+  .table-row-hover:hover {
+    @apply bg-card-hover;
+  }
+  
+  /* Focus Visible for Accessibility */
+  .focus-ring {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
+  }
+  
+  /* Hero Gradient Animation */
+  @keyframes gradient {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+  
+  .animate-gradient {
+    background-size: 200% 200%;
+    animation: gradient 15s ease infinite;
+  }
+
+  /* Wave Animation for Chatbot */
+  @keyframes wave {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(20deg); }
+    75% { transform: rotate(-15deg); }
+  }
+
+  /* Scale in Animation for Chatbot */
+  @keyframes scale-in {
+    0% {
+      transform: scale(0.9);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  /* Bounce Slow Animation for Chatbot */
+  @keyframes bounce-slow {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-8px);
+    }
+  }
+
+  /* Float Animation for Chatbot */
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-4px);
+    }
+  }
+
+  /* Slow Spin Animation for Loading Screen */
+  @keyframes spin-slow {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .animate-scale-in {
+    animation: scale-in 0.3s ease-out;
+  }
+
+  .animate-spin-slow {
+    animation: spin-slow 2s linear infinite;
+  }
+}
+
+

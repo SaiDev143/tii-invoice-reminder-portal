@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Invoice Reminder Portal - Technology Innovation Institute</title>
+    <meta name="description" content="Internal invoice management and reminder system for Technology Innovation Institute finance operations" />
+    <meta name="author" content="Technology Innovation Institute" />
+
+    <meta property="og:title" content="Invoice Reminder Portal - TII" />
+    <meta property="og:description" content="Manage and send invoice reminders efficiently" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@Lovable" />
+    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+  </head>
+
+  <body>
+    <div id="root"></div>
+
+    <!-- Load config.json BEFORE React starts -->
+    <script>
+      window.__APP_CONFIG__ = {};
+
+      async function loadAppConfig() {
+        const response = await fetch("/config.json");
+        window.__APP_CONFIG__ = await response.json();
+        console.log("Runtime config loaded:", window.__APP_CONFIG__);
+      }
+      
+      // Load config BEFORE React mounts
+      loadAppConfig();
+    </script>
+
+    <script type="module">
+  async function bootstrap() {
+    const response = await fetch("/config.json", { cache: "no-store" });
+    window.__APP_CONFIG__ = await response.json();
+    console.log("Runtime config loaded:", window.__APP_CONFIG__);
+
+    // Now load the real app ONLY AFTER config is ready
+    await import("/src/main.tsx");
+  }
+
+  bootstrap();
+</script>
+
+  </body>
+</html>

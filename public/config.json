@@ -1,0 +1,24 @@
+{
+  "azure": {
+    "tenantId": "cbd8d152-e00b-41a8-82c4-a5740584cb1e",
+    "clientId": "ca371ff6-97cf-4fc4-b29c-dd4d617d2e0a",
+ 
+    "apiScope": "api://8f7a89ff-f41e-4ba1-b68b-8a318c03411c/.default",
+ 
+    "msalConfig": {
+      "auth": {
+        "clientId": "ca371ff6-97cf-4fc4-b29c-dd4d617d2e0a",
+        "authority": "https://login.microsoftonline.com/cbd8d152-e00b-41a8-82c4-a5740584cb1e",
+        "redirectUri": "https://main.d1w7w1m1f6n579.amplifyapp.com"
+      },
+      "cache": {
+        "cacheLocation": "localStorage",
+        "storeAuthStateInCookie": true
+      }
+    }
+  },
+ 
+  "api": {
+    "baseUrl": "https://bvagemn6ng.us-east-1.awsapprunner.com/api"
+  }
+}
